@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
     <main>
         <div class="wrap">
             <div class="title">
@@ -45,6 +46,90 @@
             </div>
         </div>
     </main>
+    <audio id="ambient">
+        <source src="assets/smallville_11. Lifehouse - Everything.mp3" type="audio/mpeg">
+    </audio>
+
     <script src="js/main.js"></script>
+    <canvas id="sky"></canvas>
+<script>
+    (() => {
+      const canvas = document.getElementById('sky');
+      const ctx = canvas.getContext('2d');
+      let W, H, trails = [];
+      const SHOOTING_RATE = 0.03;
+      const DPR = Math.min(window.devicePixelRatio || 1, 2);
+
+      function resize() {
+        W = canvas.clientWidth = window.innerWidth;
+        H = canvas.clientHeight = window.innerHeight;
+        canvas.width = Math.floor(W * DPR);
+        canvas.height = Math.floor(H * DPR);
+        ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+      }
+
+      function createShootingStar() {
+        const startX = Math.random() * W;
+        const startY = -20;
+        const angle = (Math.PI / 180) * (20 + Math.random() * 20);
+        const speed = 400 + Math.random() * 400;
+        const vx = Math.cos(angle) * speed;
+        const vy = Math.sin(angle) * speed;
+        const life = 0.8 + Math.random() * 0.8;
+        trails.push({ x: startX, y: startY, vx, vy, life, t: 0, alpha: 1, width: 2 + Math.random() * 2 });
+      }
+
+      let last = performance.now();
+      function tick(now) {
+        const dt = Math.min((now - last) / 1000, 0.033);
+        last = now;
+        if (Math.random() < SHOOTING_RATE) createShootingStar();
+        ctx.clearRect(0, 0, W, H);
+
+        for (let i = trails.length - 1; i >= 0; i--) {
+          const st = trails[i];
+          st.t += dt;
+          st.x += st.vx * dt;
+          st.y += st.vy * dt;
+          st.alpha = Math.max(0, 1 - st.t / st.life);
+
+          const tailX = st.x - (st.vx * 0.04);
+          const tailY = st.y - (st.vy * 0.04);
+          const g = ctx.createLinearGradient(st.x, st.y, tailX, tailY);
+          g.addColorStop(0, `rgba(255,255,255,${0.9 * st.alpha})`);
+          g.addColorStop(1, `rgba(255,255,255,0)`);
+
+          ctx.strokeStyle = g;
+          ctx.lineWidth = st.width;
+          ctx.lineCap = 'round';
+          ctx.beginPath();
+          ctx.moveTo(st.x, st.y);
+          ctx.lineTo(tailX, tailY);
+          ctx.stroke();
+
+          ctx.fillStyle = `rgba(255,255,255,${0.7 * st.alpha})`;
+          ctx.beginPath();
+          ctx.arc(st.x, st.y, 1.5 + st.width * 0.4, 0, Math.PI * 2);
+          ctx.fill();
+
+          if (st.y > H + 50 || st.x > W + 50 || st.alpha <= 0) {
+            trails.splice(i, 1);
+          }
+        }
+        requestAnimationFrame(tick);
+      }
+
+      window.addEventListener('resize', resize, { passive: true });
+      resize();
+      requestAnimationFrame(tick);
+
+      // Настройка стиля canvas
+      canvas.style.position = "fixed";
+      canvas.style.inset = "0";
+      canvas.style.zIndex = "0";
+      canvas.style.pointerEvents = "none";
+      canvas.style.background = "transparent";
+    })();
+</script>
 </body>
 </html>

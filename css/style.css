@@ -1,7 +1,7 @@
 *{
     margin: 0;
     padding: 0;
-     box-sizing: border-box;
+    box-sizing: border-box;
 }
 html{
     font-size: 0,625rem;
@@ -24,9 +24,12 @@ main{
 
 }
 
+
+
 @media screen and (max-width: 1040px) {
     main{
         height: 100%;
+        
     }
 }
 
@@ -114,7 +117,7 @@ main .btn{
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 1.5rem;
-    box-sizing: border-box; /* Для корректного учета padding и border */
+    box-sizing: border-box; 
     background-color: #3b3b3b;
     color: white;
    
