@@ -1,6 +1,7 @@
 *{
     margin: 0;
     padding: 0;
+     box-sizing: border-box;
 }
 html{
     font-size: 0,625rem;
@@ -12,8 +13,9 @@ body{
     height: inherit;
 }
 main{
+    
     width: 100%;
-    height: 100%;
+ 
     background-image: url(../image/Anime\ Landscape\ 4k\ Ultra\ HD\ Wallpaper.png);
     background-repeat: no-repeat;
     background-size: cover;
