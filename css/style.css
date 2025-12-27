@@ -13,15 +13,21 @@ body{
     height: inherit;
 }
 main{
-    
-    width: 100%;
  
+    width: 100%;
     background-image: url(../image/Anime\ Landscape\ 4k\ Ultra\ HD\ Wallpaper.png);
     background-repeat: no-repeat;
     background-size: cover;
     margin: 0;
     display: flex; 
     align-items: center;
+
+}
+
+@media screen and (max-width: 900px) {
+    main{
+        height: 100%;
+    }
 }
 
 main div{
@@ -39,6 +45,7 @@ main .title{
     border-radius: 15px;
     padding: 1rem 2rem;
     margin: 2rem auto;
+    text-align: center;
 }
 main .btn{
    display: flex;
@@ -113,14 +120,14 @@ main .btn{
    
 }
 main .wrap{
-    
+    margin: 2rem auto;
     background-image: url(../image/09d23fbe13ac3182ef8f52aaa79cd99b.jpg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
     padding: 4rem 2rem;
     max-width: 700px;
-    margin: 0 auto;
+
     
     border-radius: 1rem;
     
