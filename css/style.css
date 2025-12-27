@@ -134,11 +134,11 @@ main .wrap{
 }
 .monolog{
     margin: 0 auto;
+    padding: 2rem 3rem;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 .monolog p{
     color: white;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 2rem 3rem;
     font-size: 1.5rem;
     line-height: 1.8rem;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
