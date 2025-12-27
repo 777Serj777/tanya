@@ -39,7 +39,8 @@ main .title{
     margin: 2rem auto;
 }
 main .btn{
-
+   display: flex;
+   justify-content: center;
 }
 @keyframes slideme {
   0% {
@@ -55,6 +56,7 @@ main .btn{
     margin-left: 80px;
   }
 }
+
 
 .btn button{
   overflow: hidden;
@@ -92,6 +94,10 @@ main .btn{
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
 }
+.key{
+    display: flex;
+    justify-content: center;
+}
 .key input{
     width: 80%;
     padding: 10px 15px;
@@ -102,9 +108,10 @@ main .btn{
     box-sizing: border-box; /* Для корректного учета padding и border */
     background-color: #3b3b3b;
     color: white;
+   
 }
 main .wrap{
-    text-align: center;
+    
     background-image: url(../image/09d23fbe13ac3182ef8f52aaa79cd99b.jpg);
     background-repeat: no-repeat;
     background-position: center;
@@ -112,9 +119,12 @@ main .wrap{
     padding: 4rem 2rem;
     max-width: 700px;
     margin: 0 auto;
-
+    
     border-radius: 1rem;
     
+}
+.monolog{
+    margin: 0 auto;
 }
 .monolog p{
     color: white;
