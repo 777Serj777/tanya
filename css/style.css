@@ -32,6 +32,12 @@ main{
         
     }
 }
+@media screen and (max-height: 800px) {
+    main{
+        height: auto;
+        
+    }
+}
 
 main div{
     margin-bottom: 1.5rem;
