@@ -32,7 +32,7 @@ main{
         
     }
 }
-@media screen and (max-height: 800px) {
+@media screen and (max-height: 1440px) {
     main{
         height: auto;
         
